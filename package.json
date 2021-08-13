@@ -5,7 +5,7 @@
   "homepage": "https://monsterswap.net",
   "repository": {
     "type": "git",
-    "url": "https://github.com/monsterswap-finance/monster-swap-core"    
+    "url": "https://github.com/monsterswap-finance/monster-swap-core"
   },
   "scripts": {
     "ganache": "npx ganache-cli",
@@ -17,8 +17,8 @@
     "compile:truffle": "truffle compile",
     "migrate:testnet": "truffle migrate --network testnet",
     "migrate:dev": "truffle migrate --reset --network development",
-    "flatten": "truffle-flattener ./contracts/ApeFactory.sol --output ./ApeFactory_flat.sol && truffle-flattener ./contracts/ApePair.sol --output ./ApePair_flat.sol",
-    "verify:testnet": "truffle run verify ApeFactory --network testnet",
+    "flatten": "truffle-flattener ./contracts/MonsterFactory.sol --output ./MonsterFactory_flat.sol && truffle-flattener ./contracts/MonsterPair.sol --output ./MonsterPair_flat.sol",
+    "verify:testnet": "truffle run verify MonsterFactory --network testnet",
     "pretest": "yarn compile",
     "test": "mocha",
     "prepublishOnly": "yarn test"
@@ -34,6 +34,7 @@
     "node": ">=10"
   },
   "devDependencies": {
+    "@truffle/hdwallet-provider": "^1.4.3",
     "@types/chai": "^4.2.6",
     "@types/mocha": "^5.2.7",
     "chai": "^4.2.0",

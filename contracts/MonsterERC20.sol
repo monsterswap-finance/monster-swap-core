@@ -16,7 +16,7 @@ import './libraries/SafeMath.sol';
 contract MonsterERC20 is IMonsterERC20 {
     using SafeMath for uint;
 
-    string public constant name = 'MonsterSwapFinance LPs';
+    string public constant name = 'Monster LPs';
     string public constant symbol = 'Monster-LP';
     uint8 public constant decimals = 18;
     uint  public totalSupply;

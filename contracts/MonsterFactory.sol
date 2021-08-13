@@ -14,7 +14,7 @@ import './interfaces/IMonsterFactory.sol';
 import './MonsterPair.sol';
 
 contract MonsterFactory is IMonsterFactory {
-    bytes32 public constant INIT_CODE_PAIR_HASH = keccak256(abi.encodePacked(type(ApePair).creationCode));
+    bytes32 public constant INIT_CODE_PAIR_HASH = keccak256(abi.encodePacked(type(MonsterPair).creationCode));
 
     address public feeTo;
     address public feeToSetter;
@@ -37,12 +37,12 @@ contract MonsterFactory is IMonsterFactory {
         (address token0, address token1) = tokenA < tokenB ? (tokenA, tokenB) : (tokenB, tokenA);
         require(token0 != address(0), 'MonsterSwap: ZERO_ADDRESS');
         require(getPair[token0][token1] == address(0), 'MonsterSwap: PAIR_EXISTS'); // single check is sufficient
-        bytes memory bytecode = type(ApePair).creationCode;
+        bytes memory bytecode = type(MonsterPair).creationCode;
         bytes32 salt = keccak256(abi.encodePacked(token0, token1));
         assembly {
             pair := create2(0, add(bytecode, 32), mload(bytecode), salt)
         }
-        IApePair(pair).initialize(token0, token1);
+        IMonsterPair(pair).initialize(token0, token1);
         getPair[token0][token1] = pair;
         getPair[token1][token0] = pair; // populate mapping in the reverse direction
         allPairs.push(pair);

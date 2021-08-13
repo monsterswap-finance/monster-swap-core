@@ -97,7 +97,7 @@ contract MonsterPair is IMonsterPair, MonsterERC20 {
 
     // if fee is on, mint liquidity equivalent to 1/6th of the growth in sqrt(k)
     function _mintFee(uint112 _reserve0, uint112 _reserve1) private returns (bool feeOn) {
-        address feeTo = IApeFactory(factory).feeTo();
+        address feeTo = IMonsterFactory(factory).feeTo();
         feeOn = feeTo != address(0);
         uint _kLast = kLast; // gas savings
         if (feeOn) {
@@ -179,7 +179,7 @@ contract MonsterPair is IMonsterPair, MonsterERC20 {
         require(to != _token0 && to != _token1, 'MonsterSwap: INVALID_TO');
         if (amount0Out > 0) _safeTransfer(_token0, to, amount0Out); // optimistically transfer tokens
         if (amount1Out > 0) _safeTransfer(_token1, to, amount1Out); // optimistically transfer tokens
-        if (data.length > 0) IApeCallee(to).pancakeCall(msg.sender, amount0Out, amount1Out, data);
+        if (data.length > 0) IMonsterCallee(to).pancakeCall(msg.sender, amount0Out, amount1Out, data);
         balance0 = IERC20(_token0).balanceOf(address(this));
         balance1 = IERC20(_token1).balanceOf(address(this));
         }

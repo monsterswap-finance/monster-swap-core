@@ -15,7 +15,7 @@
     "precompile": "yarn clean",
     "compile": "waffle .waffle.json",
     "compile:truffle": "truffle compile",
-    "migrate:testnet": "truffle migrate --network testnet",
+    "migrate:testnet": "truffle migrate --network testnet --reset",
     "migrate:dev": "truffle migrate --reset --network development",
     "flatten": "truffle-flattener ./contracts/MonsterFactory.sol --output ./MonsterFactory_flat.sol && truffle-flattener ./contracts/MonsterPair.sol --output ./MonsterPair_flat.sol",
     "verify:testnet": "truffle run verify MonsterFactory --network testnet",

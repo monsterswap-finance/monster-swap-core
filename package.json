@@ -16,9 +16,13 @@
     "compile": "waffle .waffle.json",
     "compile:truffle": "truffle compile",
     "migrate:testnet": "truffle migrate --network testnet --reset",
+    "migrate:ftmtest": "truffle migrate --network ftmtest --reset",
+    "migrate:ftmmain": "truffle migrate --network ftmmain --reset",
     "migrate:dev": "truffle migrate --reset --network development",
     "flatten": "truffle-flattener ./contracts/MonsterFactory.sol --output ./MonsterFactory_flat.sol && truffle-flattener ./contracts/MonsterPair.sol --output ./MonsterPair_flat.sol",
     "verify:testnet": "truffle run verify MonsterFactory --network testnet",
+    "verify:ftmtest": "truffle run verify MonsterFactory --network ftmtest",
+    "verify:ftmmain": "truffle run verify MonsterFactory --network ftmmain",
     "pretest": "yarn compile",
     "test": "mocha",
     "prepublishOnly": "yarn test"
